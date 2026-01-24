@@ -48,7 +48,7 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="navbar-cta">
-            <a href="tel:+4912345678" className="btn btn-primary">
+            <a href="tel:+4971469928729" className="btn btn-primary">
               Reservieren
             </a>
           </li>
