@@ -1,0 +1,81 @@
+.entertainment-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.entertainment-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px var(--shadow-color),
+              0 0 30px var(--purple-glow);
+  border-color: var(--purple-accent);
+}
+
+.entertainment-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple-primary), var(--purple-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  box-shadow: 0 5px 20px var(--purple-glow);
+}
+
+.entertainment-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: var(--text-primary);
+}
+
+.entertainment-content {
+  position: relative;
+}
+
+.entertainment-count {
+  display: inline-block;
+  background: var(--purple-accent);
+  color: var(--text-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.entertainment-title {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.entertainment-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .entertainment-card {
+    padding: 1.5rem;
+  }
+
+  .entertainment-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .entertainment-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+}

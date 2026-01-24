@@ -1,0 +1,121 @@
+/* Menu Hero */
+.menu-hero {
+  padding: 4rem 0 3rem;
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  text-align: center;
+}
+
+.menu-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.menu-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Menu Content */
+.menu-content {
+  padding: 3rem 0 5rem;
+}
+
+/* Filter */
+.menu-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.filter-btn:hover {
+  color: var(--purple-light);
+  border-color: var(--purple-accent);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--purple-primary), var(--purple-accent));
+  color: var(--text-primary);
+  border-color: transparent;
+  box-shadow: 0 4px 15px var(--purple-glow);
+}
+
+/* Category Title */
+.category-title {
+  text-align: center;
+  font-size: 1.75rem;
+  color: var(--purple-light);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.category-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple-primary), var(--purple-accent));
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* Menu Grid */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Menu Note */
+.menu-note {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.menu-note p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-hero {
+    padding: 3rem 0 2rem;
+  }
+
+  .menu-filter {
+    gap: 0.75rem;
+  }
+
+  .filter-btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-btn {
+    flex: 1;
+    min-width: 100px;
+  }
+}
