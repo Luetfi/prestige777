@@ -114,36 +114,60 @@
 @media (max-width: 768px) {
   .navbar-toggle {
     display: flex;
+    z-index: 1001;
   }
 
   .navbar-menu {
     position: fixed;
-    top: 72px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: var(--bg-primary);
     padding: 2rem;
-    gap: 1.5rem;
-    transform: translateX(100%);
-    transition: transform var(--transition-normal);
+    gap: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+    z-index: 999;
+  }
+
+  .navbar-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+    z-index: -1;
   }
 
   .navbar-menu.active {
-    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
   }
 
   .navbar-menu a {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .navbar-menu li {
+    text-align: center;
   }
 
   .navbar-cta {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 
   .navbar-cta a {
     width: 100%;
     text-align: center;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
   }
 }
