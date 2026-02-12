@@ -1,81 +1,301 @@
+/* ── Entertainment Card ── Neon arcade aesthetic ── */
+
 .entertainment-card {
-  background: var(--bg-card);
-  border-radius: var(--border-radius-lg);
-  padding: 2rem;
-  border: 1px solid var(--border-color);
-  transition: all var(--transition-normal);
+  position: relative;
+  background: linear-gradient(165deg, rgba(26, 26, 50, 0.95) 0%, rgba(13, 13, 20, 0.98) 100%);
+  border-radius: 24px;
+  padding: 2.5rem 2rem 2rem;
+  border: 1px solid rgba(157, 78, 221, 0.15);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── Background image layer ── */
+.entertainment-card-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  z-index: -3;
+}
+
+.entertainment-card-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.18;
+  filter: saturate(0.3) brightness(0.7);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.entertainment-card:hover .entertainment-card-bg img {
+  opacity: 0.3;
+  filter: saturate(0.5) brightness(0.6);
+  transform: scale(1.08);
+}
+
+/* Ambient glow behind card */
+.entertainment-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 25px;
+  background: conic-gradient(
+    from 180deg,
+    transparent 0%,
+    rgba(157, 78, 221, 0.4) 15%,
+    transparent 30%,
+    transparent 70%,
+    rgba(199, 125, 255, 0.3) 85%,
+    transparent 100%
+  );
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* Inner noise texture */
+.entertainment-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(157, 78, 221, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(123, 44, 191, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.5s ease;
 }
 
 .entertainment-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px var(--shadow-color),
-              0 0 30px var(--purple-glow);
-  border-color: var(--purple-accent);
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(157, 78, 221, 0.6);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(157, 78, 221, 0.3),
+    0 0 100px rgba(157, 78, 221, 0.15),
+    inset 0 1px 0 rgba(199, 125, 255, 0.15);
 }
 
+
+/* ── Icon container ── */
 .entertainment-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple-primary), var(--purple-accent));
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(123, 44, 191, 0.25), rgba(157, 78, 221, 0.1));
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  box-shadow: 0 5px 20px var(--purple-glow);
+  margin-bottom: 1.75rem;
+  border: 1px solid rgba(157, 78, 221, 0.25);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.entertainment-icon::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 28px;
+  background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.entertainment-card:hover .entertainment-icon {
+  transform: scale(1.1);
+  background: linear-gradient(145deg, rgba(123, 44, 191, 0.4), rgba(157, 78, 221, 0.2));
+  border-color: rgba(199, 125, 255, 0.5);
+  box-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
+}
+
+.entertainment-card:hover .entertainment-icon::before {
+  opacity: 1;
 }
 
 .entertainment-icon svg {
   width: 40px;
   height: 40px;
-  fill: var(--text-primary);
+  fill: var(--purple-light);
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 6px rgba(199, 125, 255, 0.4));
 }
 
+.entertainment-card:hover .entertainment-icon svg {
+  fill: #fff;
+  filter: drop-shadow(0 0 12px rgba(199, 125, 255, 0.7));
+}
+
+/* ── Content ── */
 .entertainment-content {
   position: relative;
 }
 
 .entertainment-count {
-  display: inline-block;
-  background: var(--purple-accent);
-  color: var(--text-primary);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--purple-primary), var(--purple-accent));
+  color: #fff;
+  padding: 0 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(157, 78, 221, 0.35);
+  text-transform: uppercase;
 }
 
 .entertainment-title {
   color: var(--text-primary);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+  transition: color 0.4s ease;
+}
+
+.entertainment-card:hover .entertainment-title {
+  color: var(--purple-light);
 }
 
 .entertainment-description {
   color: var(--text-secondary);
   font-size: 0.95rem;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.65;
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
 }
 
+.entertainment-card:hover .entertainment-description {
+  opacity: 1;
+}
+
+/* ── Border beam animation ── */
+.entertainment-card-beam {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  transition: padding 0.4s ease;
+}
+
+.entertainment-card:hover .entertainment-card-beam {
+  padding: 3px;
+}
+
+.entertainment-card-beam::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 70%,
+    rgba(199, 125, 255, 0.45) 80%,
+    rgba(157, 78, 221, 0.8) 85%,
+    rgba(199, 125, 255, 0.45) 90%,
+    transparent 100%
+  );
+  animation: borderBeamSpin 4s linear infinite;
+}
+
+.entertainment-card:hover .entertainment-card-beam::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 50%,
+    rgba(199, 125, 255, 0.8) 65%,
+    rgba(157, 78, 221, 1) 75%,
+    rgba(255, 180, 255, 1) 80%,
+    rgba(157, 78, 221, 1) 85%,
+    rgba(199, 125, 255, 0.8) 95%,
+    transparent 100%
+  );
+}
+
+/* Stagger each card so beams don't spin in sync */
+.entertainment-card:nth-child(2) .entertainment-card-beam::before {
+  animation-delay: -1s;
+}
+
+.entertainment-card:nth-child(3) .entertainment-card-beam::before {
+  animation-delay: -2s;
+}
+
+.entertainment-card:nth-child(4) .entertainment-card-beam::before {
+  animation-delay: -3s;
+}
+
+@keyframes borderBeamSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Decorative corner accents ── */
+.entertainment-card-accent {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.entertainment-card:hover .entertainment-card-accent {
+  opacity: 1;
+}
+
+.entertainment-card-accent--tl {
+  top: 12px;
+  left: 12px;
+  border-top: 2px solid rgba(199, 125, 255, 0.5);
+  border-left: 2px solid rgba(199, 125, 255, 0.5);
+  border-radius: 4px 0 0 0;
+}
+
+.entertainment-card-accent--br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 2px solid rgba(199, 125, 255, 0.5);
+  border-right: 2px solid rgba(199, 125, 255, 0.5);
+  border-radius: 0 0 4px 0;
+}
+
+/* ── Responsive ── */
 @media (max-width: 480px) {
   .entertainment-card {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem 1.5rem;
+    border-radius: 18px;
   }
 
   .entertainment-icon {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
   }
 
   .entertainment-icon svg {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
   }
 }

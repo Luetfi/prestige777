@@ -1,15 +1,16 @@
 import './MenuItem.css'
 
-function MenuItem({ name, description, price, tag }) {
+function MenuItem({ name, description, price, tag, className }) {
   return (
-    <div className="menu-item">
-      <div className="menu-item-header">
-        <h3 className="menu-item-name">{name}</h3>
-        {tag && <span className="menu-item-tag">{tag}</span>}
+    <div className={`menu-item${tag ? ' menu-item--premium' : ''}${className ? ' ' + className : ''}`}>
+      <div className="menu-item-info">
+        <h3 className="menu-item-name">
+          {name}
+          {tag && <span className="menu-item-tag">{tag}</span>}
+        </h3>
+        {description && <p className="menu-item-description">{description}</p>}
       </div>
-      {description && (
-        <p className="menu-item-description">{description}</p>
-      )}
+      <span className="menu-item-dots" aria-hidden="true"></span>
       <div className="menu-item-price">{price}</div>
     </div>
   )

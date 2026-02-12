@@ -1,0 +1,107 @@
+/* Floating Decorative Elements */
+.floating-elements {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Individual floating element */
+.floating-el {
+  position: absolute;
+  color: rgba(157, 78, 221, 0.5);
+  filter: drop-shadow(0 0 8px rgba(157, 78, 221, 0.15));
+  animation: floatBob 8s ease-in-out infinite;
+}
+
+/* Size variants */
+.floating-el--sm {
+  width: 24px;
+  height: 24px;
+  opacity: 0.06;
+}
+
+.floating-el--md {
+  width: 56px;
+  height: 56px;
+  opacity: 0.08;
+}
+
+.floating-el--lg {
+  width: 110px;
+  height: 110px;
+  opacity: 0.05;
+}
+
+.floating-el svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* Animation variety via nth-child */
+.floating-el:nth-child(even) {
+  animation-name: floatBobAlt;
+  animation-duration: 10s;
+}
+
+.floating-el:nth-child(3n) {
+  animation-duration: 12s;
+}
+
+.floating-el:nth-child(5n) {
+  animation-duration: 9s;
+}
+
+/* Keyframes */
+@keyframes floatBob {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes floatBobAlt {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-15px) rotate(-2deg);
+  }
+  60% {
+    transform: translateY(-10px) rotate(2.5deg);
+  }
+  80% {
+    transform: translateY(-18px) rotate(-1deg);
+  }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .floating-el {
+    animation: none;
+  }
+}
+
+/* Responsive: hide every 2nd element on tablet */
+@media (max-width: 768px) {
+  .floating-el:nth-child(2n) {
+    display: none;
+  }
+}
+
+/* Responsive: only show first 2 on mobile */
+@media (max-width: 480px) {
+  .floating-el:nth-child(n+3) {
+    display: none;
+  }
+}

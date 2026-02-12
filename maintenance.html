@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prestige 777 — Wartungsarbeiten</title>
+  <meta name="description" content="Prestige 777 Shisha Bar — Wir führen gerade Wartungsarbeiten durch. Wir sind bald wieder für euch da!">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0D0D0D;
+      --bg-secondary: #1A1A2E;
+      --purple-primary: #7B2CBF;
+      --purple-accent: #9D4EDD;
+      --purple-light: #C77DFF;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0B0B0;
+      --text-muted: #787878;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Background ── */
+    .bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+    }
+
+    .bg-orb--1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(123, 44, 191, 0.3) 0%, transparent 70%);
+      top: -200px;
+      left: -200px;
+      animation: orbMove1 14s ease-in-out infinite;
+    }
+
+    .bg-orb--2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
+      bottom: -150px;
+      right: -150px;
+      animation: orbMove2 18s ease-in-out infinite;
+    }
+
+    .bg-orb--3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(199, 125, 255, 0.12) 0%, transparent 70%);
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: orbMove3 10s ease-in-out infinite;
+    }
+
+    @keyframes orbMove1 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      50% { transform: translate(40px, 30px) scale(1.15); opacity: 0.8; }
+    }
+
+    @keyframes orbMove2 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+      50% { transform: translate(-30px, -40px) scale(1.1); opacity: 0.7; }
+    }
+
+    @keyframes orbMove3 {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
+      50% { transform: translateX(-50%) scale(1.3); opacity: 0.6; }
+    }
+
+    /* ── Smoke particles ── */
+    .smoke-container {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .smoke {
+      position: absolute;
+      bottom: -100px;
+      border-radius: 50%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(157, 78, 221, 0.12) 0%,
+        rgba(123, 44, 191, 0.06) 40%,
+        transparent 70%
+      );
+      filter: blur(30px);
+      opacity: 0;
+      animation: smokeRise 12s ease-out infinite;
+    }
+
+    .smoke-1 { left: 10%; width: 180px; height: 180px; animation-delay: 0s; animation-duration: 14s; }
+    .smoke-2 { left: 30%; width: 120px; height: 120px; animation-delay: 2s; animation-duration: 11s; }
+    .smoke-3 { left: 50%; width: 200px; height: 200px; animation-delay: 4s; animation-duration: 15s; }
+    .smoke-4 { left: 70%; width: 140px; height: 140px; animation-delay: 1s; animation-duration: 12s; }
+    .smoke-5 { left: 85%; width: 160px; height: 160px; animation-delay: 3s; animation-duration: 13s; }
+
+    @keyframes smokeRise {
+      0% { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
+      10% { opacity: 0.5; }
+      50% { opacity: 0.3; transform: translateY(-50vh) scale(1.2) rotate(45deg); }
+      80% { opacity: 0.1; }
+      100% { opacity: 0; transform: translateY(-100vh) scale(2) rotate(90deg); }
+    }
+
+    /* ── Main content ── */
+    .main {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .content {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    /* ── Logo ── */
+    .logo {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.15em;
+      margin-bottom: 3rem;
+      text-decoration: none;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+
+    .logo-text {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo-number {
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: 0.1em;
+      background: linear-gradient(
+        90deg,
+        var(--purple-accent) 0%,
+        #d898ff 20%,
+        var(--purple-accent) 40%,
+        #ffffff 50%,
+        var(--purple-accent) 60%,
+        #d898ff 80%,
+        var(--purple-accent) 100%
+      );
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.4));
+      animation: shimmer 4s ease-in-out 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 100% 0; }
+      35% { background-position: -50% 0; }
+      100% { background-position: -50% 0; }
+    }
+
+    /* ── Decorative line ── */
+    .decor-line {
+      width: clamp(80px, 20vw, 180px);
+      height: 2px;
+      margin: 0 auto 2.5rem;
+      background: linear-gradient(90deg, transparent, var(--purple-accent), var(--purple-light), var(--purple-accent), transparent);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      position: relative;
+    }
+
+    .decor-line::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.4), transparent);
+      filter: blur(6px);
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* ── Heading ── */
+    .heading {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, var(--purple-light) 0%, #e0a0ff 50%, var(--purple-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    }
+
+    /* ── Description ── */
+    .description {
+      color: var(--text-secondary);
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+    }
+
+    /* ── Progress bar ── */
+    .progress-wrap {
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+    }
+
+    .progress-bar {
+      width: 100%;
+      max-width: 320px;
+      height: 4px;
+      margin: 0 auto;
+      background: rgba(157, 78, 221, 0.15);
+      border-radius: 100px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -40%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--purple-accent), var(--purple-light), var(--purple-accent), transparent);
+      border-radius: 100px;
+      animation: progressSlide 2s ease-in-out infinite;
+    }
+
+    @keyframes progressSlide {
+      0% { left: -40%; }
+      100% { left: 100%; }
+    }
+
+    .progress-label {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.75rem;
+    }
+
+    /* ── Contact info ── */
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--purple-light);
+      background: rgba(123, 44, 191, 0.1);
+      border: 1px solid rgba(157, 78, 221, 0.25);
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-link:hover {
+      background: rgba(123, 44, 191, 0.2);
+      border-color: rgba(157, 78, 221, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(123, 44, 191, 0.15);
+    }
+
+    .contact-link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid rgba(157, 78, 221, 0.1);
+    }
+
+    .footer p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .smoke-2, .smoke-4 {
+        display: none;
+      }
+
+      .smoke {
+        filter: blur(20px);
+      }
+
+      .logo {
+        margin-bottom: 2rem;
+      }
+
+      .decor-line {
+        margin-bottom: 2rem;
+      }
+
+      .description {
+        margin-bottom: 2rem;
+      }
+
+      .progress-wrap {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-link {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .smoke, .bg-orb, .logo-number, .progress-bar::after, .decor-line::after {
+        animation: none;
+      }
+
+      .smoke {
+        opacity: 0.08;
+        transform: translateY(-30vh) scale(1.5);
+      }
+
+      .logo, .decor-line, .heading, .description, .progress-wrap, .contact {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .progress-bar::after {
+        left: 30%;
+        opacity: 0.7;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background orbs -->
+  <div class="bg">
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+  </div>
+
+  <!-- Smoke particles -->
+  <div class="smoke-container">
+    <div class="smoke smoke-1"></div>
+    <div class="smoke smoke-2"></div>
+    <div class="smoke smoke-3"></div>
+    <div class="smoke smoke-4"></div>
+    <div class="smoke smoke-5"></div>
+  </div>
+
+  <!-- Main content -->
+  <main class="main">
+    <div class="content">
+
+      <div class="logo">
+        <span class="logo-text">Prestige</span>
+        <span class="logo-number">777</span>
+      </div>
+
+      <div class="decor-line"></div>
+
+      <h1 class="heading">Wartungsarbeiten</h1>
+
+      <p class="description">
+        Wir arbeiten gerade an Verbesserungen für euch.<br>
+        Unsere Website ist in Kürze wieder erreichbar.
+      </p>
+
+      <div class="progress-wrap">
+        <div class="progress-bar"></div>
+        <p class="progress-label">Wird aktualisiert&hellip;</p>
+      </div>
+
+      <div class="contact">
+        <a href="tel:+4971469928729" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          07146 9928729
+        </a>
+        <a href="https://www.instagram.com/prestige__777/" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          @prestige__777
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; <script>document.write(new Date().getFullYear())</script> Prestige777. Alle Rechte vorbehalten.</p>
+  </footer>
+
+</body>
+</html>

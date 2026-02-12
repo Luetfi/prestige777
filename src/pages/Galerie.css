@@ -1,0 +1,51 @@
+/* Galerie Page */
+.galerie-page {
+  min-height: 100vh;
+}
+
+.galerie-hero {
+  padding: 5rem 0 3rem;
+  background:
+    linear-gradient(180deg, rgba(26, 26, 46, 0.92) 0%, rgba(10, 10, 15, 0.98) 100%),
+    url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  position: relative;
+}
+
+.galerie-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.galerie-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Gallery wrapper for floating elements */
+.galerie-gallery-wrap {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(15, 15, 25, 1) 50%, var(--bg-primary) 100%);
+}
+
+/* Override Gallery section title on dedicated page */
+.galerie-page .gallery-section .section-title,
+.galerie-page .gallery-section .section-subtitle {
+  display: none;
+}
+
+.galerie-page .gallery-section {
+  padding-top: 2rem;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .galerie-hero {
+    padding: 3rem 0 1.5rem;
+  }
+}

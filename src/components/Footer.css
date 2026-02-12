@@ -13,7 +13,7 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;
   margin-bottom: 3rem;
 }
@@ -25,6 +25,8 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .footer-logo .logo-text {
@@ -87,11 +89,22 @@
   color: var(--purple-light);
 }
 
-.footer-hours li span {
+.footer-hours li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.footer-hours li span:first-child {
   color: var(--text-primary);
   font-weight: 500;
-  display: inline-block;
-  min-width: 80px;
+  min-width: 70px;
+}
+
+.footer-hours .hours-time {
+  color: var(--text-secondary);
+  font-weight: 400;
+  text-align: right;
 }
 
 .footer-social {
@@ -127,6 +140,44 @@
   text-align: center;
 }
 
+.footer-legal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.footer-legal a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-legal a:hover {
+  color: var(--purple-light);
+}
+
+.legal-divider {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.footer-cookie-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.footer-cookie-btn:hover {
+  color: var(--purple-light);
+}
+
 .footer-bottom p {
   color: var(--text-muted);
   font-size: 0.9rem;
@@ -150,9 +201,8 @@
     transform: translateX(-50%);
   }
 
-  .footer-hours li span {
-    display: block;
-    min-width: auto;
-    margin-bottom: 0.25rem;
+  .footer-hours li {
+    justify-content: center;
+    gap: 1.5rem;
   }
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './ContactForm.css'
 
 function ContactForm() {
@@ -6,7 +7,8 @@ function ContactForm() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    privacy: false
   })
 
   const [errors, setErrors] = useState({})
@@ -36,15 +38,19 @@ function ContactForm() {
       newErrors.message = 'Die Nachricht muss mindestens 10 Zeichen lang sein'
     }
 
+    if (!formData.privacy) {
+      newErrors.privacy = 'Bitte stimmen Sie der Datenschutzerklärung zu'
+    }
+
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value, type, checked } = e.target
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     }))
 
     if (errors[name]) {
@@ -55,6 +61,8 @@ function ContactForm() {
     }
   }
 
+  const [submitError, setSubmitError] = useState('')
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -63,16 +71,34 @@ function ContactForm() {
     }
 
     setIsSubmitting(true)
+    setSubmitError('')
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch('/api/contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setIsSubmitted(true)
+        setFormData({ name: '', email: '', subject: '', message: '', privacy: false })
+        setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        setSubmitError(data.message || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.')
+      }
+    } catch {
+      setSubmitError('Verbindungsfehler. Bitte versuchen Sie es später erneut.')
+    }
 
     setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: '', email: '', subject: '', message: '' })
-
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000)
   }
 
   return (
@@ -80,6 +106,12 @@ function ContactForm() {
       {isSubmitted && (
         <div className="form-success">
           Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.
+        </div>
+      )}
+
+      {submitError && (
+        <div className="form-error-message">
+          {submitError}
         </div>
       )}
 
@@ -137,6 +169,23 @@ function ContactForm() {
           rows="5"
         />
         {errors.message && <span className="form-error">{errors.message}</span>}
+      </div>
+
+      <div className={`form-group form-group--checkbox${errors.privacy ? ' has-error' : ''}`}>
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            name="privacy"
+            checked={formData.privacy}
+            onChange={handleChange}
+            className={errors.privacy ? 'error' : ''}
+          />
+          <span className="checkbox-custom" />
+          <span className="checkbox-text">
+            Ich habe die <Link to="/datenschutz" target="_blank">Datenschutzerklärung</Link> gelesen und stimme der Verarbeitung meiner Daten zu. *
+          </span>
+        </label>
+        {errors.privacy && <span className="form-error">{errors.privacy}</span>}
       </div>
 
       <button

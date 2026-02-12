@@ -1,8 +1,19 @@
-/* Menu Hero */
+/* ========================================
+   Menu Page — Dark Luxury Redesign
+   ======================================== */
+
+/* ----------------------------------------
+   3A: Hero Section
+   ---------------------------------------- */
 .menu-hero {
-  padding: 4rem 0 3rem;
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  padding: 5rem 0 3rem;
+  background:
+    linear-gradient(180deg, rgba(26, 26, 46, 0.92) 0%, rgba(10, 10, 15, 0.98) 100%),
+    url('https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
   text-align: center;
+  position: relative;
 }
 
 .menu-title {
@@ -17,27 +28,103 @@
   margin: 0 auto;
 }
 
-/* Menu Content */
+/* ----------------------------------------
+   3B: Content Section Background
+   ---------------------------------------- */
 .menu-content {
   padding: 3rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(15, 15, 25, 1) 50%, var(--bg-primary) 100%);
 }
 
-/* Filter */
+.menu-content > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-content-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.menu-content-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.menu-content-orb--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(123, 44, 191, 0.25) 0%, transparent 70%);
+  top: 10%;
+  left: -150px;
+  animation: menuContentOrb1 20s ease-in-out infinite;
+}
+
+.menu-content-orb--2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(157, 78, 221, 0.18) 0%, transparent 70%);
+  bottom: 15%;
+  right: -120px;
+  animation: menuContentOrb2 16s ease-in-out infinite;
+}
+
+@keyframes menuContentOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
+  50% { transform: translate(40px, -20px) scale(1.1); opacity: 0.35; }
+}
+
+@keyframes menuContentOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+  50% { transform: translate(-30px, 20px) scale(1.05); opacity: 0.3; }
+}
+
+.menu-content-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(157, 78, 221, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 78, 221, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* ----------------------------------------
+   3C: Filter Bar — Glassmorphism Capsule
+   ---------------------------------------- */
 .menu-filter {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(157, 78, 221, 0.12);
+  border-radius: 60px;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .filter-btn {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.35rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-secondary);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 50px;
   cursor: pointer;
   transition: all var(--transition-normal);
@@ -46,42 +133,166 @@
 .filter-btn:hover {
   color: var(--purple-light);
   border-color: var(--purple-accent);
+  background: rgba(157, 78, 221, 0.08);
 }
 
 .filter-btn.active {
   background: linear-gradient(135deg, var(--purple-primary), var(--purple-accent));
   color: var(--text-primary);
   border-color: transparent;
-  box-shadow: 0 4px 15px var(--purple-glow);
+  box-shadow: 0 4px 20px var(--purple-glow), 0 0 30px rgba(157, 78, 221, 0.15);
 }
 
-/* Category Title */
-.category-title {
-  text-align: center;
-  font-size: 1.75rem;
-  color: var(--purple-light);
+.filter-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.filter-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ----------------------------------------
+   3D: Sub-Filter with Animation
+   ---------------------------------------- */
+.menu-subfilter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
   margin-bottom: 2rem;
+  animation: subfilterAppear 0.4s ease-out;
+}
+
+@keyframes subfilterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subfilter-btn {
+  padding: 0.5rem 1.15rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
   position: relative;
 }
 
-.category-title::after {
+.subfilter-btn:hover {
+  color: var(--purple-light);
+  border-color: var(--purple-accent);
+}
+
+.subfilter-btn.active {
+  background: var(--bg-card);
+  color: var(--purple-light);
+  border-color: var(--purple-accent);
+  box-shadow: 0 2px 10px rgba(157, 78, 221, 0.15);
+}
+
+.subfilter-btn.active::after {
   content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--purple-primary), var(--purple-accent));
-  margin: 1rem auto 0;
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--purple-accent), transparent);
   border-radius: 2px;
 }
 
-/* Menu Grid */
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+/* ----------------------------------------
+   3E: Category Title with Flanking Lines
+   ---------------------------------------- */
+.category-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  font-size: 1.75rem;
+  color: var(--purple-light);
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-/* Menu Note */
+.category-title::before,
+.category-title::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.4));
+}
+
+.category-title::after {
+  background: linear-gradient(90deg, rgba(157, 78, 221, 0.4), transparent);
+}
+
+/* ----------------------------------------
+   3F: Group Headers (subcategory sections)
+   ---------------------------------------- */
+.menu-section-group {
+  margin-bottom: 2rem;
+}
+
+.menu-section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 0 1.25rem;
+}
+
+.menu-section-header::before,
+.menu-section-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.15));
+}
+
+.menu-section-header::after {
+  background: linear-gradient(90deg, rgba(157, 78, 221, 0.15), transparent);
+}
+
+.menu-section-header h3 {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* ----------------------------------------
+   3G: Menu Grid → Flex Column
+   ---------------------------------------- */
+.menu-grid {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ----------------------------------------
+   Menu Note
+   ---------------------------------------- */
 .menu-note {
   margin-top: 3rem;
   text-align: center;
@@ -93,29 +304,95 @@
   font-style: italic;
 }
 
-/* Responsive */
+/* ========================================
+   Responsive
+   ======================================== */
 @media (max-width: 768px) {
   .menu-hero {
     padding: 3rem 0 2rem;
   }
 
   .menu-filter {
-    gap: 0.75rem;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 20px;
   }
 
   .filter-btn {
-    padding: 0.6rem 1.25rem;
-    font-size: 0.9rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .menu-subfilter {
+    gap: 0.5rem;
+  }
+
+  .subfilter-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .category-title {
+    font-size: 1.4rem;
+    gap: 0.75rem;
+  }
+
+  .category-title::before,
+  .category-title::after {
+    max-width: 60px;
+  }
+
+  .menu-section-header {
+    padding: 0 0.75rem;
+  }
+
+  .menu-section-header h3 {
+    font-size: 0.72rem;
   }
 }
 
 @media (max-width: 480px) {
-  .menu-grid {
-    grid-template-columns: 1fr;
+  .menu-hero {
+    padding: 3rem 0 1.5rem;
+  }
+
+  .menu-filter {
+    border-radius: 16px;
+    gap: 0.4rem;
+    padding: 0.6rem 0.75rem;
   }
 
   .filter-btn {
     flex: 1;
-    min-width: 100px;
+    min-width: 70px;
+    justify-content: center;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .filter-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .category-title::before,
+  .category-title::after {
+    max-width: 40px;
+  }
+
+  .menu-grid {
+    max-width: 100%;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .menu-hero-orb,
+  .menu-content-orb {
+    animation: none;
+  }
+
+  .menu-subfilter {
+    animation: none;
   }
 }
