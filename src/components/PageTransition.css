@@ -1,0 +1,96 @@
+/* Top loading bar */
+.page-loader-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.page-loader-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--purple-accent),
+    var(--purple-light),
+    var(--purple-accent)
+  );
+  box-shadow: 0 0 12px var(--purple-accent),
+              0 0 4px var(--purple-light);
+  border-radius: 0 2px 2px 0;
+  transition: none;
+}
+
+/* Loading state: bar grows quickly to ~85% */
+.page-loader-bar.loading {
+  opacity: 1;
+}
+
+.page-loader-bar.loading .page-loader-bar-inner {
+  width: 85%;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Finishing state: bar completes to 100% then fades out */
+.page-loader-bar.finishing {
+  opacity: 1;
+  animation: barFadeOut 0.4s ease 0.3s forwards;
+}
+
+.page-loader-bar.finishing .page-loader-bar-inner {
+  width: 100%;
+  transition: width 0.25s ease-out;
+}
+
+@keyframes barFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Page content transitions */
+.page-transition {
+  will-change: opacity, transform;
+}
+
+.page-transition.fade-out {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.page-transition.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: pageEnter 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition.fade-out,
+  .page-transition.fade-in {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .page-loader-bar {
+    display: none;
+  }
+}

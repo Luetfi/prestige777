@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import PageTransition from './components/PageTransition'
 import CookieBanner from './components/CookieBanner'
 import { useCookieConsentContext } from './hooks/CookieConsentContext'
 import Home from './pages/Home'
@@ -30,14 +31,16 @@ function App() {
       <ScrollToTop />
       <Navbar />
       <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/galerie" element={<Galerie />} />
-          <Route path="/kontakt" element={<Contact />} />
-          <Route path="/impressum" element={<Impressum />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />
-        </Routes>
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/galerie" element={<Galerie />} />
+            <Route path="/kontakt" element={<Contact />} />
+            <Route path="/impressum" element={<Impressum />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
+          </Routes>
+        </PageTransition>
       </main>
       <Footer />
       <CookieBanner

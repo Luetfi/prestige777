@@ -33,7 +33,7 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 3rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* Contact Info */
@@ -52,6 +52,7 @@
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   transition: all var(--transition-normal);
+  flex: 1;
 }
 
 .info-card:hover {
@@ -156,10 +157,12 @@
 
 /* Social Links */
 .social-links {
+  margin-top: 2rem;
   padding: 1.25rem;
   background: var(--bg-card);
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
+  text-align: center;
 }
 
 .social-links h3 {
@@ -170,6 +173,7 @@
 
 .social-icons {
   display: flex;
+  justify-content: center;
   gap: 0.75rem;
 }
 
