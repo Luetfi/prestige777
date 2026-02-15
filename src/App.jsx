@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
+import SideNav from './components/SideNav'
 import CookieBanner from './components/CookieBanner'
 import { useCookieConsentContext } from './hooks/CookieConsentContext'
 import Home from './pages/Home'
@@ -25,11 +26,13 @@ function ScrollToTop() {
 
 function App() {
   const { showBanner, acceptAll, acceptNecessary, saveConsent, consent } = useCookieConsentContext()
+  const { pathname } = useLocation()
 
   return (
     <div className="app">
       <ScrollToTop />
       <Navbar />
+      {pathname === '/' && <SideNav />}
       <main className="main-content">
         <PageTransition>
           <Routes>

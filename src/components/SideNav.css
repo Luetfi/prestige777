@@ -1,0 +1,170 @@
+/* ── Side Navigation ── */
+.side-nav {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.side-nav-track {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 6px;
+  background: rgba(13, 13, 13, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(157, 78, 221, 0.15);
+  border-right: none;
+  border-radius: 12px 0 0 12px;
+  box-shadow:
+    -4px 0 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 30px rgba(123, 44, 191, 0.05);
+}
+
+/* ── Button ── */
+.side-nav-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-secondary, #B0B0B0);
+  transition: all 0.25s ease;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.side-nav-btn:hover {
+  background: rgba(157, 78, 221, 0.12);
+  color: var(--purple-light, #C77DFF);
+}
+
+.side-nav-btn--active {
+  color: var(--purple-light, #C77DFF);
+}
+
+.side-nav-btn--active .side-nav-btn-icon {
+  background: rgba(157, 78, 221, 0.2);
+  box-shadow: 0 0 12px rgba(157, 78, 221, 0.3);
+}
+
+/* ── Icon ── */
+.side-nav-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.side-nav-btn:hover .side-nav-btn-icon {
+  background: rgba(157, 78, 221, 0.15);
+}
+
+/* ── Label (expand on hover) ── */
+.side-nav-btn-label {
+  max-width: 0;
+  opacity: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              padding 0.3s ease;
+  padding-right: 0;
+}
+
+.side-nav:hover .side-nav-btn-label {
+  max-width: 120px;
+  opacity: 1;
+  padding-left: 8px;
+  padding-right: 10px;
+}
+
+/* ── Active indicator dot ── */
+.side-nav-btn--active::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 16px;
+  background: var(--purple-accent, #9D4EDD);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(157, 78, 221, 0.5);
+}
+
+/* ── Mobile: bottom bar ── */
+@media (max-width: 768px) {
+  .side-nav {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: none;
+  }
+
+  .side-nav-track {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+    padding: 6px 8px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+    border-radius: 16px 16px 0 0;
+    border: 1px solid rgba(157, 78, 221, 0.15);
+    border-bottom: none;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .side-nav-btn {
+    flex-direction: column;
+    padding: 6px 4px;
+    gap: 2px;
+  }
+
+  .side-nav-btn-icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+  }
+
+  .side-nav-btn-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .side-nav-btn-label {
+    max-width: none;
+    opacity: 0.7;
+    font-size: 0.6rem;
+    padding: 0;
+  }
+
+  .side-nav:hover .side-nav-btn-label {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .side-nav-btn--active .side-nav-btn-label {
+    opacity: 1;
+    color: var(--purple-light, #C77DFF);
+  }
+
+  .side-nav-btn--active::before {
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 3px;
+  }
+}

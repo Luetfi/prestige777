@@ -152,7 +152,7 @@ function GoogleReviews() {
   }
 
   return (
-    <section className="section reviews">
+    <section id="reviews" className="section reviews">
       <div className="reviews-bg">
         <div className="reviews-bg-orb reviews-bg-orb--1"></div>
         <div className="reviews-bg-orb reviews-bg-orb--2"></div>

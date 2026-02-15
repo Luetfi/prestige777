@@ -86,7 +86,7 @@ function Home() {
       <div className="section-divider section-divider--hero"></div>
 
       {/* About Section */}
-      <section className="section about">
+      <section id="about" className="section about">
         <FloatingElements preset="hookah" />
         <div className="about-bg">
           <div className="about-bg-orb about-bg-orb--1"></div>
@@ -237,7 +237,7 @@ function Home() {
       <div className="section-divider section-divider--dark"></div>
 
       {/* Entertainment Section */}
-      <section className="section entertainment">
+      <section id="entertainment" className="section entertainment">
         <FloatingElements preset="oriental" />
         <div className="entertainment-bg">
           <div className="entertainment-bg-orb entertainment-bg-orb--1"></div>
@@ -341,7 +341,7 @@ function Home() {
       <div className="section-divider section-divider--secondary"></div>
 
       {/* Events & Veranstaltungen Section */}
-      <section className="section events">
+      <section id="events" className="section events">
         <FloatingElements preset="stars" />
         <div className="events-bg">
           <div className="events-bg-collage">
@@ -454,7 +454,7 @@ function Home() {
       <div className="section-divider section-divider--secondary"></div>
 
       {/* CTA Section */}
-      <section className="section cta-section">
+      <section id="kontakt" className="section cta-section">
         <div className="smoke-container smoke-purple smoke-ambient">
           <div className="smoke smoke-1"></div>
           <div className="smoke smoke-3"></div>

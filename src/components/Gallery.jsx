@@ -161,7 +161,7 @@ function Gallery({ mode = 'carousel' }) {
   const gridRef = useStaggerReveal({ staggerMs: 80 })
 
   return (
-    <section className={`section gallery-section ${mode === 'carousel' ? 'gallery-section--showcase' : ''}`}>
+    <section id="gallery" className={`section gallery-section ${mode === 'carousel' ? 'gallery-section--showcase' : ''}`}>
       {mode === 'carousel' && (
         <>
           <FloatingElements preset="gallery" />
