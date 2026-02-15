@@ -114,7 +114,7 @@
 }
 
 /* ── Diamond separators (desktop only) ── */
-.navbar-menu > li:not(.navbar-cta):not(.navbar-instagram) + li:not(.navbar-cta):not(.navbar-instagram)::before {
+.navbar-menu > li:not(.navbar-cta) + li:not(.navbar-cta)::before {
   content: '';
   position: absolute;
   left: -1.15rem;
@@ -162,42 +162,24 @@
 }
 
 /* ══════════════════════════════════════════════
-   Instagram Icon — Desktop circular button
+   Instagram Icon — Desktop: in menu, Mobile: in navbar bar
    ══════════════════════════════════════════════ */
 
-.navbar-instagram a {
+/* Desktop Instagram (inside .navbar-menu) — hidden, we use the one in navbar-actions on desktop too
+   Actually on desktop, Instagram sits in the menu. On mobile, it's in navbar-actions. */
+
+.navbar-instagram-mobile {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════
+   Navbar Actions (mobile: Instagram + Hamburger)
+   ══════════════════════════════════════════════ */
+
+.navbar-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(157, 78, 221, 0.3);
-  color: var(--text-secondary);
-  background: rgba(157, 78, 221, 0.08);
-  transition: all 0.3s ease;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-.navbar-instagram a::after {
-  display: none;
-}
-
-.navbar-instagram a:hover {
-  color: #fff;
-  background: rgba(157, 78, 221, 0.25);
-  border-color: var(--purple-accent);
-  box-shadow: 0 0 16px rgba(157, 78, 221, 0.35);
-}
-
-.navbar-instagram svg {
-  flex-shrink: 0;
-}
-
-.navbar-instagram-label {
-  display: none;
+  gap: 0.75rem;
 }
 
 /* ══════════════════════════════════════════════
@@ -275,6 +257,32 @@
   .navbar-toggle {
     display: flex;
     z-index: 1001;
+  }
+
+  /* Show Instagram icon in navbar bar on mobile */
+  .navbar-instagram-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(157, 78, 221, 0.3);
+    color: var(--text-secondary);
+    background: rgba(157, 78, 221, 0.08);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .navbar-instagram-mobile:hover {
+    color: #fff;
+    background: rgba(157, 78, 221, 0.25);
+    border-color: var(--purple-accent);
+    box-shadow: 0 0 16px rgba(157, 78, 221, 0.35);
+  }
+
+  .navbar-instagram-mobile svg {
+    flex-shrink: 0;
   }
 
   /* Backdrop overlay */
@@ -368,17 +376,6 @@
   .navbar-menu a:hover,
   .navbar-menu a.active {
     background: rgba(157, 78, 221, 0.1);
-  }
-
-  /* ── Instagram — mobile icon only ── */
-  .navbar-instagram {
-    border-bottom: none !important;
-  }
-
-  .navbar-instagram a {
-    width: 36px;
-    height: 36px;
-    margin: 0.5rem auto;
   }
 
   .navbar-cta {
