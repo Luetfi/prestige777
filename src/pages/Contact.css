@@ -317,8 +317,12 @@
     padding: 1.5rem;
   }
 
-  .map-placeholder {
+  .map-container {
     height: 300px;
+  }
+
+  .map-section {
+    padding: 0 0 3rem;
   }
 }
 

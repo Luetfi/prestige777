@@ -190,6 +190,29 @@
   }
 
   .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-links h4::after,
+  .footer-hours h4::after,
+  .footer-contact h4::after {
+    left: 0;
+  }
+
+  .footer-hours li {
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .footer-legal {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
     grid-template-columns: 1fr;
     text-align: center;
   }
