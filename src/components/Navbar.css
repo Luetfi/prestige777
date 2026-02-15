@@ -1,13 +1,62 @@
+/* ══════════════════════════════════════════════
+   Navbar — Premium Glassmorphism Design
+   ══════════════════════════════════════════════ */
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #0d0d0d;
-  border-bottom: 1px solid var(--border-color);
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.75) 0%,
+    rgba(13, 13, 20, 0.65) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(157, 78, 221, 0.12);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* ── Animated glow border line ── */
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--purple-accent),
+    var(--purple-light),
+    var(--purple-accent),
+    transparent
+  );
+  opacity: 0.5;
+  animation: navGlowPulse 3s ease-in-out infinite;
+}
+
+@keyframes navGlowPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+}
+
+/* ── Scroll state ── */
+.navbar-scrolled {
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.92) 0%,
+    rgba(13, 13, 20, 0.88) 100%
+  );
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 1px 12px rgba(123, 44, 191, 0.1);
+}
+
+/* ── Container ── */
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -17,23 +66,41 @@
   justify-content: space-between;
 }
 
+/* ══════════════════════════════════════════════
+   Logo — Gradient text + glow digits
+   ══════════════════════════════════════════════ */
+
 .navbar-logo {
   display: flex;
   align-items: baseline;
   gap: 0.25rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   text-decoration: none;
 }
 
 .logo-text {
-  color: var(--text-primary);
+  background: linear-gradient(180deg, #ffffff 20%, var(--purple-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .logo-number {
   color: var(--purple-light);
   font-style: italic;
+  filter: drop-shadow(0 0 8px rgba(157, 78, 221, 0.5));
+  transition: filter 0.3s ease;
 }
+
+.navbar-logo:hover .logo-number {
+  filter: drop-shadow(0 0 14px rgba(199, 125, 255, 0.7))
+         drop-shadow(0 0 28px rgba(157, 78, 221, 0.4));
+}
+
+/* ══════════════════════════════════════════════
+   Nav Links — Uppercase luxury style
+   ══════════════════════════════════════════════ */
 
 .navbar-menu {
   display: flex;
@@ -42,15 +109,36 @@
   list-style: none;
 }
 
+.navbar-menu > li {
+  position: relative;
+}
+
+/* ── Diamond separators (desktop only) ── */
+.navbar-menu > li:not(.navbar-cta):not(.navbar-instagram) + li:not(.navbar-cta):not(.navbar-instagram)::before {
+  content: '';
+  position: absolute;
+  left: -1.15rem;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--purple-accent);
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.5;
+}
+
 .navbar-menu a {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.88rem;
   padding: 0.5rem 0;
   position: relative;
   transition: color var(--transition-fast);
 }
 
+/* ── Hover underline with gradient glow ── */
 .navbar-menu a::after {
   content: '';
   position: absolute;
@@ -58,7 +146,8 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--purple-accent);
+  background: linear-gradient(90deg, var(--purple-accent), var(--purple-light));
+  box-shadow: 0 0 6px rgba(157, 78, 221, 0.4);
   transition: width var(--transition-normal);
 }
 
@@ -72,14 +161,64 @@
   width: 100%;
 }
 
+/* ══════════════════════════════════════════════
+   Instagram Icon — Desktop circular button
+   ══════════════════════════════════════════════ */
+
+.navbar-instagram a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(157, 78, 221, 0.3);
+  color: var(--text-secondary);
+  background: rgba(157, 78, 221, 0.08);
+  transition: all 0.3s ease;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.navbar-instagram a::after {
+  display: none;
+}
+
+.navbar-instagram a:hover {
+  color: #fff;
+  background: rgba(157, 78, 221, 0.25);
+  border-color: var(--purple-accent);
+  box-shadow: 0 0 16px rgba(157, 78, 221, 0.35);
+}
+
+.navbar-instagram svg {
+  flex-shrink: 0;
+}
+
+.navbar-instagram-label {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════
+   CTA Button
+   ══════════════════════════════════════════════ */
+
 .navbar-cta a {
   padding: 0.75rem 1.5rem;
   color: #fff !important;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
 }
 
 .navbar-cta a::after {
   display: none;
 }
+
+/* ══════════════════════════════════════════════
+   Hamburger Toggle
+   ══════════════════════════════════════════════ */
 
 .navbar-toggle {
   display: none;
@@ -120,10 +259,17 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Backdrop overlay */
+/* ══════════════════════════════════════════════
+   Backdrop Overlay
+   ══════════════════════════════════════════════ */
+
 .navbar-overlay {
   display: none;
 }
+
+/* ══════════════════════════════════════════════
+   Mobile — ≤768px
+   ══════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
   .navbar-toggle {
@@ -181,6 +327,11 @@
     visibility: visible;
   }
 
+  /* Hide diamond separators on mobile */
+  .navbar-menu > li::before {
+    display: none !important;
+  }
+
   /* Staggered item animations */
   .navbar-menu li {
     text-align: center;
@@ -209,6 +360,7 @@
     display: block;
     width: 100%;
     letter-spacing: 0.5px;
+    text-transform: none;
     transition: color 0.25s ease, background 0.25s ease;
     border-radius: 8px;
   }
@@ -216,6 +368,30 @@
   .navbar-menu a:hover,
   .navbar-menu a.active {
     background: rgba(157, 78, 221, 0.1);
+  }
+
+  /* ── Instagram — mobile full-width ── */
+  .navbar-instagram a {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    padding: 1rem 1.5rem;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+  }
+
+  .navbar-instagram a:hover {
+    background: rgba(157, 78, 221, 0.1);
+    box-shadow: none;
+    border-color: transparent;
+  }
+
+  .navbar-instagram-label {
+    display: inline;
   }
 
   .navbar-cta {
@@ -230,5 +406,16 @@
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
     border-radius: 12px;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   Accessibility — Reduced Motion
+   ══════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar::after {
+    animation: none;
+    opacity: 0.5;
   }
 }
