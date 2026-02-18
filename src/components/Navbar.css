@@ -172,6 +172,36 @@
   display: none;
 }
 
+/* Desktop Instagram icon in menu */
+.navbar-instagram-desktop a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(157, 78, 221, 0.3);
+  color: var(--text-secondary);
+  background: rgba(157, 78, 221, 0.08);
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.navbar-instagram-desktop a::after {
+  display: none;
+}
+
+.navbar-instagram-desktop a:hover {
+  color: #fff;
+  background: rgba(157, 78, 221, 0.25);
+  border-color: var(--purple-accent);
+  box-shadow: 0 0 16px rgba(157, 78, 221, 0.35);
+}
+
+.navbar-instagram-desktop a svg {
+  flex-shrink: 0;
+}
+
 /* ══════════════════════════════════════════════
    Navbar Actions (mobile: Instagram + Hamburger)
    ══════════════════════════════════════════════ */
@@ -337,6 +367,11 @@
 
   /* Hide diamond separators on mobile */
   .navbar-menu > li::before {
+    display: none !important;
+  }
+
+  /* Hide desktop Instagram in mobile menu */
+  .navbar-instagram-desktop {
     display: none !important;
   }
 

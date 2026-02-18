@@ -1,3 +1,4 @@
+import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import EntertainmentCard from '../components/EntertainmentCard'
@@ -8,7 +9,27 @@ import FloatingElements from '../components/FloatingElements'
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal'
 import './Home.css'
 
+const heroImages = [
+  '/prestige1.jpeg',
+  '/prestige2.jpeg',
+  '/prestige5.jpeg',
+  '/prestige8.jpeg',
+  '/prestige9.jpeg',
+  '/prestige10.jpeg',
+  '/prestige11.jpeg',
+]
+
 function Home() {
+  const [currentImage, setCurrentImage] = useState(0)
+
+  const nextImage = useCallback(() => {
+    setCurrentImage(prev => (prev + 1) % heroImages.length)
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(nextImage, 4000)
+    return () => clearInterval(interval)
+  }, [nextImage])
   const aboutHeaderRef = useScrollReveal()
   const aboutShowcaseRef = useScrollReveal()
   const aboutInfoRef = useScrollReveal()
@@ -28,6 +49,15 @@ function Home() {
       />
       {/* Hero Section */}
       <section className="hero">
+        <div className="hero-slideshow">
+          {heroImages.map((src, index) => (
+            <div
+              key={src}
+              className={`hero-slide${index === currentImage ? ' hero-slide--active' : ''}`}
+              style={{ backgroundImage: `url(${src})` }}
+            />
+          ))}
+        </div>
         <div className="hero-overlay"></div>
         <SmokeEffect />
         <div className="hero-content">
@@ -107,7 +137,7 @@ function Home() {
             <div ref={aboutShowcaseRef} className="about-showcase scroll-reveal reveal-fade-left">
               <div className="about-image">
                 <img
-                  src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&h=400&fit=crop"
+                  src="/prestige9.jpeg"
                   alt="Prestige 777 Lounge Atmosphäre"
                 />
                 <div className="about-image-overlay"></div>
@@ -276,7 +306,7 @@ function Home() {
             />
             <EntertainmentCard
               className="scroll-reveal reveal-fade-up"
-              backgroundImage="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop&auto=format"
+              backgroundImage="/spieletisch.jpeg"
               icon={
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <rect x="3" y="6" width="18" height="12" rx="2"/>
@@ -345,13 +375,12 @@ function Home() {
         <FloatingElements preset="stars" />
         <div className="events-bg">
           <div className="events-bg-collage">
-            {/* Platzhalter-Bilder: später durch echte Event-Fotos ersetzen */}
-            <div className="events-bg-img" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=70)' }}></div>
-            <div className="events-bg-img" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=70)' }}></div>
-            <div className="events-bg-img" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1496843916299-590492c751f4?w=600&q=70)' }}></div>
-            <div className="events-bg-img" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1528495612343-9ca9f4a4de28?w=600&q=70)' }}></div>
-            <div className="events-bg-img" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=600&q=70)' }}></div>
-            <div className="events-bg-img" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=70)' }}></div>
+            <div className="events-bg-img" style={{ backgroundImage: 'url(/galerie1.jpeg)' }}></div>
+            <div className="events-bg-img" style={{ backgroundImage: 'url(/galerie3.jpeg)' }}></div>
+            <div className="events-bg-img" style={{ backgroundImage: 'url(/galerie2.jpeg)' }}></div>
+            <div className="events-bg-img" style={{ backgroundImage: 'url(/galerie9.jpeg)' }}></div>
+            <div className="events-bg-img" style={{ backgroundImage: 'url(/galerie4.jpeg)' }}></div>
+            <div className="events-bg-img" style={{ backgroundImage: 'url(/galerie5.jpeg)' }}></div>
           </div>
           <div className="events-bg-overlay"></div>
         </div>
@@ -455,6 +484,7 @@ function Home() {
 
       {/* CTA Section */}
       <section id="kontakt" className="section cta-section">
+        <div className="cta-section-bg"></div>
         <div className="smoke-container smoke-purple smoke-ambient">
           <div className="smoke smoke-1"></div>
           <div className="smoke smoke-3"></div>

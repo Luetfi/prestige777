@@ -1,7 +1,10 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import './Lightbox.css'
 
 function Lightbox({ images, currentIndex, onClose, onPrev, onNext }) {
+  const touchStartX = useRef(null)
+
   const handleKeyDown = useCallback((e) => {
     switch (e.key) {
       case 'Escape':
@@ -28,9 +31,23 @@ function Lightbox({ images, currentIndex, onClose, onPrev, onNext }) {
     }
   }, [handleKeyDown])
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return
+    const diff = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) onNext()
+      else onPrev()
+    }
+    touchStartX.current = null
+  }
+
   const currentImage = images[currentIndex]
 
-  return (
+  return createPortal(
     <div className="lightbox-overlay" onClick={onClose}>
       <button className="lightbox-close" onClick={onClose} aria-label="Schließen">
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -38,31 +55,36 @@ function Lightbox({ images, currentIndex, onClose, onPrev, onNext }) {
         </svg>
       </button>
 
-      <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-        <button className="lightbox-nav lightbox-prev" onClick={onPrev} aria-label="Vorheriges Bild">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-          </svg>
-        </button>
+      <button className="lightbox-nav lightbox-prev" onClick={(e) => { e.stopPropagation(); onPrev() }} aria-label="Vorheriges Bild">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
 
+      <div
+        className="lightbox-content"
+        onClick={(e) => e.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <img
           src={currentImage.src}
           alt={currentImage.alt}
           className="lightbox-image"
         />
-
-        <button className="lightbox-nav lightbox-next" onClick={onNext} aria-label="Nächstes Bild">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-          </svg>
-        </button>
-
       </div>
+
+      <button className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); onNext() }} aria-label="Nächstes Bild">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </button>
 
       <div className="lightbox-counter">
         {currentIndex + 1} / {images.length}
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 

@@ -6,78 +6,55 @@ import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal'
 import './Gallery.css'
 
 const galleryImages = [
-  {
-    id: 1,
-    src: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=800&h=600&fit=crop',
-    alt: 'Premium Shisha',
-    caption: 'Unsere Premium Shishas'
-  },
-  {
-    id: 2,
-    src: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&h=600&fit=crop',
-    alt: 'Lounge Bereich',
-    caption: 'Gemütliche Lounge Atmosphäre'
-  },
-  {
-    id: 3,
-    src: 'https://images.unsplash.com/photo-1583845112239-97ef1341b271?w=800&h=600&fit=crop',
-    alt: 'Shisha Rauch',
-    caption: 'Aromatischer Shisha-Genuss'
-  },
-  {
-    id: 4,
-    src: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=600&fit=crop',
-    alt: 'Bar Bereich',
-    caption: 'Stylischer Bar Bereich'
-  },
-  {
-    id: 5,
-    src: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&h=600&fit=crop',
-    alt: 'Lounge Ambiente',
-    caption: 'Entspannte Atmosphäre'
-  },
-  {
-    id: 6,
-    src: 'https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=800&h=600&fit=crop',
-    alt: 'Shisha Kopf',
-    caption: 'Handgefertigte Shisha-Köpfe'
-  },
-  {
-    id: 7,
-    src: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop',
-    alt: 'Event Nacht',
-    caption: 'Unvergessliche Event Nächte'
-  },
-  {
-    id: 8,
-    src: 'https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=800&h=600&fit=crop',
-    alt: 'Getränke',
-    caption: 'Erfrischende Cocktails & Drinks'
-  },
-  {
-    id: 9,
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop',
-    alt: 'DJ Nacht',
-    caption: 'DJ Nights am Wochenende'
-  },
-  {
-    id: 10,
-    src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop',
-    alt: 'Snacks',
-    caption: 'Leckere Snacks & Mezze'
-  },
-  {
-    id: 11,
-    src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop',
-    alt: 'Party Stimmung',
-    caption: 'Ausgelassene Stimmung'
-  },
-  {
-    id: 12,
-    src: 'https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&h=600&fit=crop',
-    alt: 'Neon Lights',
-    caption: 'Stimmungsvolle Beleuchtung'
-  }
+  { id: 45, src: '/prestige1.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 46, src: '/prestige2.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 47, src: '/prestige5.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 48, src: '/prestige8.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 49, src: '/prestige9.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 50, src: '/prestige10.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 51, src: '/prestige11.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 1, src: '/galerie1.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 2, src: '/galerie2.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 3, src: '/galerie3.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 4, src: '/galerie4.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 5, src: '/galerie5.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 6, src: '/galerie6.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 7, src: '/galerie7.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 8, src: '/galerie8.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 9, src: '/galerie9.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 10, src: '/galerie10.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 12, src: '/galerie12.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 13, src: '/galerie13.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 14, src: '/galerie14.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 15, src: '/galerie15.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 16, src: '/galerie16.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 17, src: '/galerie17.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 18, src: '/galerie18.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 19, src: '/galerie19.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 20, src: '/galerie20.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 21, src: '/galerie21.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 22, src: '/galerie22.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 23, src: '/galerie23.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 24, src: '/galerie24.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 26, src: '/galerie26.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 27, src: '/galerie27.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 28, src: '/galerie28.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 29, src: '/galerie29.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 30, src: '/galerie30.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 31, src: '/galerie31.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 32, src: '/galerie32.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 33, src: '/galerie33.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 34, src: '/galerie34.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 35, src: '/galerie35.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 36, src: '/galerie36.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 37, src: '/galerie37.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 38, src: '/galerie38.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 39, src: '/galerie39.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 40, src: '/galerie40.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 41, src: '/galerie41.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 42, src: '/galerie42.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 43, src: '/galerie43.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
+  { id: 44, src: '/galerie44.jpeg', alt: 'Prestige 777 Galerie', caption: 'Prestige 777' },
 ]
 
 const AUTO_PLAY_INTERVAL = 2500
@@ -116,12 +93,12 @@ function Gallery({ mode = 'carousel' }) {
     goToSlide(prev)
   }, [currentIndex, totalSlides, goToSlide])
 
-  // Auto-play for carousel
+  // Auto-play for carousel (pause when lightbox is open)
   useEffect(() => {
-    if (mode !== 'carousel') return
+    if (mode !== 'carousel' || lightboxOpen) return
     timerRef.current = setInterval(goNext, AUTO_PLAY_INTERVAL)
     return () => clearInterval(timerRef.current)
-  }, [goNext, mode])
+  }, [goNext, mode, lightboxOpen])
 
   // Scroll active thumbnail into view
   useEffect(() => {
@@ -288,7 +265,7 @@ function Gallery({ mode = 'carousel' }) {
             {galleryImages.map((image, index) => (
               <div
                 key={image.id}
-                className="gallery-grid-item scroll-reveal reveal-fade-up"
+                className="gallery-grid-item"
                 onClick={() => openLightbox(index)}
               >
                 <img src={image.src} alt={image.alt} loading="lazy" />
