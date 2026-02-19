@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './ContactForm.css'
 
+const WEB3FORMS_ACCESS_KEY = '59b237bd-3a57-4971-b575-326ee11d10a4'
+
 function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -74,15 +76,17 @@ function ContactForm() {
     setSubmitError('')
 
     try {
-      const response = await fetch('/api/contact.php', {
+      const body = new FormData()
+      body.append('access_key', WEB3FORMS_ACCESS_KEY)
+      body.append('from_name', 'Prestige 777 Kontaktformular')
+      body.append('subject', `Kontaktformular: ${formData.subject}`)
+      body.append('name', formData.name)
+      body.append('email', formData.email)
+      body.append('message', formData.message)
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        })
+        body
       })
 
       const data = await response.json()

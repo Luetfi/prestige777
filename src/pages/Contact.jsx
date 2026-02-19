@@ -15,9 +15,10 @@ function Contact() {
   return (
     <div className="contact-page">
       <SEO
-        title="Kontakt & Anfahrt – Shisha Bar Remseck"
-        description="Kontaktiere die Prestige 777 Shisha Bar in Remseck am Neckar bei Ludwigsburg. Adresse: Neckaraue 5, 71686 Remseck. Telefon: 07146 9928729. Kostenlose Parkplätze vor Ort."
+        title="Kontakt & Anfahrt – Shisha Bar Remseck bei Ludwigsburg"
+        description="Kontaktiere die Prestige 777 Shisha Bar & Lounge in Remseck am Neckar bei Ludwigsburg und Stuttgart. Adresse: Neckaraue 5, 71686 Remseck. Telefon: 07146 9928729. Kostenlose Parkplätze direkt vor der Tür. Anfahrt und Routenplaner."
         path="/kontakt"
+        keywords="Shisha Bar Kontakt, Shisha Bar Anfahrt, Prestige 777 Adresse, Shisha Bar Remseck Kontakt, Shisha Bar Ludwigsburg Anfahrt, Hookah Bar Remseck"
       />
       <section ref={heroRef} className="contact-hero scroll-reveal reveal-fade-in">
         <div className="container">

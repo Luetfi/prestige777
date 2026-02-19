@@ -10,9 +10,10 @@ function Galerie() {
   return (
     <div className="galerie-page">
       <SEO
-        title="Galerie – Bilder aus unserer Shisha Bar"
-        description="Bilder und Eindrücke aus der Prestige 777 Shisha Bar in Remseck bei Ludwigsburg. Erlebe unsere einzigartige Atmosphäre, Lounge-Bereich und Events."
+        title="Galerie – Bilder & Fotos unserer Shisha Lounge"
+        description="Bilder und Fotos aus der Prestige 777 Shisha Bar & Lounge in Remseck bei Ludwigsburg und Stuttgart. Erlebe unsere einzigartige Atmosphäre, den Lounge-Bereich, Cocktails und Events in unserer Shisha Bar."
         path="/galerie"
+        keywords="Shisha Bar Bilder, Shisha Lounge Fotos, Prestige 777 Galerie, Shisha Bar Remseck Bilder, Hookah Bar Fotos Ludwigsburg"
       />
       <section ref={heroRef} className="galerie-hero scroll-reveal reveal-fade-in">
         <div className="container">

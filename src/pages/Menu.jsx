@@ -315,9 +315,10 @@ function Menu() {
   return (
     <div className="menu-page">
       <SEO
-        title="Menü – Shisha, Cocktails & Snacks"
-        description="Entdecke die Speisekarte der Prestige 777 Shisha Bar in Remseck bei Ludwigsburg: Premium Shishas, Cocktails, Softdrinks, Kaffee und Snacks. Alle Preise auf einen Blick."
+        title="Menü & Speisekarte – Shisha, Cocktails & Snacks"
+        description="Speisekarte der Prestige 777 Shisha Bar in Remseck bei Ludwigsburg und Stuttgart: Premium Shishas, Cocktails, Softdrinks, Kaffee und Snacks. Alle Preise auf einen Blick. Shisha Lounge mit großer Auswahl."
         path="/menu"
+        keywords="Shisha Speisekarte, Shisha Preise Ludwigsburg, Cocktails Remseck, Shisha Menü, Hookah Bar Menü, Getränkekarte Shisha Bar, Prestige 777 Menü"
       />
       <section ref={heroRef} className="menu-hero scroll-reveal reveal-fade-in">
         <div className="container">

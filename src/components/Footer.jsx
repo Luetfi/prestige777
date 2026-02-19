@@ -14,8 +14,9 @@ function Footer() {
               <span className="logo-number">777</span>
             </Link>
             <p className="footer-tagline">
-              Deine Premium Shisha Bar in Remseck am Neckar bei Ludwigsburg — mit einzigartiger Atmosphäre und Entertainment.
+              Deine Premium Shisha Bar & Lounge in Remseck am Neckar bei Ludwigsburg und Stuttgart — mit einzigartiger Atmosphäre, Cocktails und Entertainment.
             </p>
+            <p className="footer-seo-text">Shisha Bar Ludwigsburg | Remseck | Stuttgart</p>
           </div>
 
           <div className="footer-links">

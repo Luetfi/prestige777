@@ -30,6 +30,7 @@ function Home() {
     const interval = setInterval(nextImage, 4000)
     return () => clearInterval(interval)
   }, [nextImage])
+  const [openFaq, setOpenFaq] = useState(null)
   const aboutHeaderRef = useScrollReveal()
   const aboutShowcaseRef = useScrollReveal()
   const aboutInfoRef = useScrollReveal()
@@ -39,13 +40,47 @@ function Home() {
   const eventsGridRef = useStaggerReveal({ staggerMs: 120 })
   const eventsCTARef = useScrollReveal()
   const ctaRef = useScrollReveal()
+  const seoTextRef = useScrollReveal()
+  const faqRef = useScrollReveal()
+
+  const faqData = [
+    {
+      question: 'Wo befindet sich die Prestige 777 Shisha Bar?',
+      answer: 'Die Prestige 777 Shisha Bar befindet sich in der Neckaraue 5, 71686 Remseck am Neckar — nur wenige Minuten von Ludwigsburg und Stuttgart entfernt. Direkt vor der Tür stehen kostenlose Parkplätze zur Verfügung.',
+    },
+    {
+      question: 'Welche Öffnungszeiten hat die Prestige 777?',
+      answer: 'Die Prestige 777 ist 7 Tage die Woche geöffnet: Montag, Dienstag und Donnerstag von 16:00 bis 00:00 Uhr, Mittwoch von 16:30 bis 00:00 Uhr, Freitag und Samstag von 16:00 bis 03:00 Uhr, und Sonntag von 16:00 bis 00:00 Uhr.',
+    },
+    {
+      question: 'Gibt es kostenlose Parkplätze?',
+      answer: 'Ja, direkt vor der Prestige 777 Shisha Bar stehen kostenlose Parkplätze für unsere Gäste zur Verfügung. Du kannst bequem und kostenfrei direkt vor der Tür parken.',
+    },
+    {
+      question: 'Kann man die Prestige 777 für Events mieten?',
+      answer: 'Ja, die Prestige 777 eignet sich hervorragend für private Events wie Geburtstagsfeiern, Junggesellenabschiede (JGA), Firmenfeiern und andere besondere Anlässe. Kontaktiere uns telefonisch unter 07146 9928729 für ein individuelles Angebot.',
+    },
+    {
+      question: 'Welche Shisha-Sorten gibt es?',
+      answer: 'Wir bieten eine große Auswahl an Premium-Shishas: Moderne Sorten wie Blackbox, Blaulicht, FFM, Love 66, Papa Luma und weitere sowie traditionelle Sorten wie Doppel Apfel, Traube-Minze, Orange-Minze, Pistazie-Vanille und mehr.',
+    },
+    {
+      question: 'Bietet die Prestige 777 auch Cocktails und Getränke an?',
+      answer: 'Ja, neben Premium-Shishas bieten wir eine große Auswahl an Cocktails (alkoholisch und alkoholfrei), Softdrinks, Kaffeespezialitäten, Milchshakes und warmen Getränken. Unsere Cocktails wie Moscow Mule, Caipirinha und Pornostar Martini sind besonders beliebt.',
+    },
+  ]
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index)
+  }
 
   return (
     <div className="home">
       <SEO
-        title="Shisha Bar in Remseck bei Ludwigsburg"
-        description="Prestige 777 – Deine Premium Shisha Bar in Remseck am Neckar bei Ludwigsburg. Shisha, Cocktails, Spielautomaten, Live Sport & Events. 7 Tage geöffnet. Kostenlose Parkplätze."
+        title="Shisha Bar in Remseck bei Ludwigsburg & Stuttgart"
+        description="Prestige 777 – Deine Premium Shisha Bar & Lounge in Remseck am Neckar bei Ludwigsburg und Stuttgart. Shisha rauchen, Cocktails, Spielautomaten, Live Sport & Events. 7 Tage geöffnet. Kostenlose Parkplätze. Die beste Hookah Bar der Region."
         path="/"
+        keywords="Shisha Bar Ludwigsburg, Shisha Bar Stuttgart, Shisha Bar Remseck, Shisha Lounge, Hookah Bar, Premium Shisha, Shisha rauchen, Cocktail Bar, Shisha Bar in der Nähe, beste Shisha Bar, Prestige 777"
       />
       {/* Hero Section */}
       <section className="hero">
@@ -55,6 +90,8 @@ function Home() {
               key={src}
               className={`hero-slide${index === currentImage ? ' hero-slide--active' : ''}`}
               style={{ backgroundImage: `url(${src})` }}
+              role="img"
+              aria-label={`Prestige 777 Shisha Bar Remseck – Impression ${index + 1}`}
             />
           ))}
         </div>
@@ -80,12 +117,12 @@ function Home() {
                 </span>
               ))}
             </span>
+            <span className="hero-slogan">Let's Make Shisha Great Again</span>
             <span className="hero-title-glow-line"></span>
           </h1>
           <p className="hero-subtitle">
             Deine Premium Shisha Bar in Remseck bei Ludwigsburg
           </p>
-          <p className="hero-slogan">Let's Make Shisha Great Again</p>
           <div className="hero-cta">
             <a href="tel:+4971469928729" className="btn btn-primary">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -480,7 +517,50 @@ function Home() {
       {/* Google Reviews Section */}
       <GoogleReviews />
 
-      {/* Reviews → CTA Transition */}
+      {/* Reviews → SEO Text Transition */}
+      <div className="section-divider section-divider--secondary"></div>
+
+      {/* SEO Text Section */}
+      <section className="section seo-text-section">
+        <div className="container">
+          <div ref={seoTextRef} className="seo-text-content scroll-reveal reveal-fade-up">
+            <h2 className="seo-text-title">Deine Shisha Bar in der Nähe von Ludwigsburg und Stuttgart</h2>
+            <p>
+              Du suchst eine <strong>Shisha Bar in der Nähe von Ludwigsburg</strong> oder <strong>Stuttgart</strong>? Die Prestige 777 ist deine <strong>Shisha Lounge in Remseck am Neckar</strong> — nur wenige Minuten von Ludwigsburg und Stuttgart entfernt. Ob <strong>Premium-Shisha rauchen</strong>, <strong>Cocktails</strong> genießen oder mit Freunden einen unvergesslichen Abend verbringen: Unsere <strong>Shisha Bar</strong> bietet dir alles, was du brauchst. Mit kostenlosen Parkplätzen, Spielautomaten und Live-Sport ist die Prestige 777 die erste Adresse für <strong>Shisha-Genuss in der Region Stuttgart und Ludwigsburg</strong>. Als <strong>beste Shisha Bar</strong> und <strong>Hookah Bar</strong> der Region setzen wir auf Qualität, Atmosphäre und erstklassigen Service — 7 Tage die Woche. Unsere <strong>Cocktail Bar</strong> verwöhnt dich zusätzlich mit einer großen Auswahl an alkoholischen und alkoholfreien Getränken.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Text → FAQ Transition */}
+      <div className="section-divider section-divider--dark"></div>
+
+      {/* FAQ Section */}
+      <section className="section faq-section">
+        <div className="container">
+          <div ref={faqRef} className="faq-content scroll-reveal reveal-fade-up">
+            <h2 className="section-title">Häufig gestellte <span>Fragen</span></h2>
+            <p className="section-subtitle">Alles Wichtige über die Prestige 777 Shisha Bar auf einen Blick</p>
+            <div className="faq-list">
+              {faqData.map((item, index) => (
+                <div key={index} className={`faq-item${openFaq === index ? ' faq-item--open' : ''}`}>
+                  <button className="faq-question" onClick={() => toggleFaq(index)} aria-expanded={openFaq === index}>
+                    <span>{item.question}</span>
+                    <svg className="faq-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+                  <div className="faq-answer">
+                    <p>{item.answer}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ → CTA Transition */}
       <div className="section-divider section-divider--secondary"></div>
 
       {/* CTA Section */}
