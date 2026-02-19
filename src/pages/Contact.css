@@ -134,27 +134,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Parking Card */
-.info-card--parking {
-  border-color: rgba(157, 78, 221, 0.2);
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(157, 78, 221, 0.04) 100%);
-}
-
-.info-card--parking:hover {
-  border-color: rgba(157, 78, 221, 0.4);
-}
-
-.info-icon--parking {
-  background: linear-gradient(135deg, var(--purple-primary), var(--purple-accent));
-}
-
-.parking-hint {
-  color: var(--purple-light) !important;
-  font-weight: 500 !important;
-  font-size: 0.85rem !important;
-  margin-top: 0.15rem !important;
-}
-
 /* Social Links */
 .social-links {
   margin-top: 2rem;

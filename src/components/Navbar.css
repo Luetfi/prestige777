@@ -165,15 +165,21 @@
    Instagram Icon — Desktop: in menu, Mobile: in navbar bar
    ══════════════════════════════════════════════ */
 
-/* Desktop Instagram (inside .navbar-menu) — hidden, we use the one in navbar-actions on desktop too
-   Actually on desktop, Instagram sits in the menu. On mobile, it's in navbar-actions. */
+/* Desktop Social Icons (inside .navbar-menu) — hidden on mobile, visible on desktop.
+   On mobile, social icons are in navbar-actions. */
 
-.navbar-instagram-mobile {
+.navbar-social-mobile {
   display: none;
 }
 
-/* Desktop Instagram icon in menu */
-.navbar-instagram-desktop a {
+/* Desktop Social icons in menu */
+.navbar-social-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-social-desktop a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,18 +193,18 @@
   padding: 0;
 }
 
-.navbar-instagram-desktop a::after {
+.navbar-social-desktop a::after {
   display: none;
 }
 
-.navbar-instagram-desktop a:hover {
+.navbar-social-desktop a:hover {
   color: #fff;
   background: rgba(157, 78, 221, 0.25);
   border-color: var(--purple-accent);
   box-shadow: 0 0 16px rgba(157, 78, 221, 0.35);
 }
 
-.navbar-instagram-desktop a svg {
+.navbar-social-desktop a svg {
   flex-shrink: 0;
 }
 
@@ -290,7 +296,7 @@
   }
 
   /* Show Instagram icon in navbar bar on mobile */
-  .navbar-instagram-mobile {
+  .navbar-social-mobile {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -304,14 +310,14 @@
     text-decoration: none;
   }
 
-  .navbar-instagram-mobile:hover {
+  .navbar-social-mobile:hover {
     color: #fff;
     background: rgba(157, 78, 221, 0.25);
     border-color: var(--purple-accent);
     box-shadow: 0 0 16px rgba(157, 78, 221, 0.35);
   }
 
-  .navbar-instagram-mobile svg {
+  .navbar-social-mobile svg {
     flex-shrink: 0;
   }
 
@@ -371,7 +377,7 @@
   }
 
   /* Hide desktop Instagram in mobile menu */
-  .navbar-instagram-desktop {
+  .navbar-social-desktop {
     display: none !important;
   }
 

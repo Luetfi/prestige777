@@ -85,6 +85,7 @@ function Home() {
           <p className="hero-subtitle">
             Deine Premium Shisha Bar in Remseck bei Ludwigsburg
           </p>
+          <p className="hero-slogan">Let's Make Shisha Great Again</p>
           <div className="hero-cta">
             <a href="tel:+4971469928729" className="btn btn-primary">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -503,6 +504,7 @@ function Home() {
               </a>
             </div>
             <p className="cta-hint">Für besondere Feiern, Veranstaltungen oder allgemeine Anfragen kannst du auch unser <Link to="/kontakt">Kontaktformular</Link> nutzen.</p>
+            <p className="cta-slogan">Let's Make Shisha Great Again</p>
           </div>
         </div>
       </section>

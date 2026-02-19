@@ -29,6 +29,7 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-content .hero-title,
   .hero-content .hero-subtitle,
+  .hero-content .hero-slogan,
   .hero-content .hero-cta,
   .hero-scroll {
     animation: none;
@@ -303,8 +304,18 @@
 .hero-subtitle {
   font-size: clamp(1.1rem, 3vw, 1.5rem);
   color: var(--text-secondary);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   letter-spacing: 0.05em;
+}
+
+.hero-slogan {
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  margin-bottom: 2.5rem;
+  animation: heroEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
 }
 
 .hero-cta {
@@ -1304,6 +1315,16 @@
 
 .cta-hint a:hover {
   color: var(--purple-accent);
+}
+
+.cta-slogan {
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  margin-top: 2.5rem;
+  margin-bottom: 0;
 }
 
 /* Responsive */
