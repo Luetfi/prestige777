@@ -52,7 +52,7 @@ const totalReviews = 160
 
 function StarRating({ rating, size = 16 }) {
   return (
-    <div className="review-stars" aria-label={`${rating} von 5 Sternen`}>
+    <div className="review-stars" role="img" aria-label={`${rating} von 5 Sternen`}>
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}

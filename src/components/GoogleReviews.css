@@ -404,20 +404,34 @@
 }
 
 .reviews-dot {
-  width: 8px;
-  height: 8px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: none;
-  background: rgba(157, 78, 221, 0.25);
+  background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
+  position: relative;
 }
 
-.reviews-dot--active {
+.reviews-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(157, 78, 221, 0.25);
+  transition: all 0.3s ease;
+}
+
+.reviews-dot--active::after {
   background: var(--purple-accent);
   box-shadow: 0 0 10px var(--purple-glow);
-  transform: scale(1.25);
+  transform: translate(-50%, -50%) scale(1.25);
 }
 
 /* ══════════════════════════════════

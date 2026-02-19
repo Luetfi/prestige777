@@ -20,7 +20,7 @@ function Footer() {
           </div>
 
           <div className="footer-links">
-            <h4>Navigation</h4>
+            <h3>Navigation</h3>
             <ul>
               <li><Link to="/">Startseite</Link></li>
               <li><Link to="/menu">Menü</Link></li>
@@ -29,7 +29,7 @@ function Footer() {
           </div>
 
           <div className="footer-hours">
-            <h4>Öffnungszeiten</h4>
+            <h3>Öffnungszeiten</h3>
             <ul>
               <li><span>Montag – Dienstag</span><span className="hours-time">16:00 – 00:00</span></li>
               <li><span>Mittwoch</span><span className="hours-time">16:30 – 00:00</span></li>
@@ -40,7 +40,7 @@ function Footer() {
           </div>
 
           <div className="footer-contact">
-            <h4>Kontakt</h4>
+            <h3>Kontakt</h3>
             <ul>
               <li>
                 <a href="tel:+4971469928729">07146 9928729</a>
