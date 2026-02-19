@@ -70,6 +70,7 @@ function Gallery({ mode = 'carousel' }) {
   const showcaseRef = useScrollReveal()
   const timerRef = useRef(null)
   const thumbStripRef = useRef(null)
+  const touchStartRef = useRef(null)
 
   const totalSlides = galleryImages.length
 
@@ -93,6 +94,23 @@ function Gallery({ mode = 'carousel' }) {
     const prev = (currentIndex - 1 + totalSlides) % totalSlides
     goToSlide(prev)
   }, [currentIndex, totalSlides, goToSlide])
+
+  // Touch swipe handlers for mobile
+  const handleTouchStart = useCallback((e) => {
+    touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+  }, [])
+
+  const handleTouchEnd = useCallback((e) => {
+    if (!touchStartRef.current) return
+    const dx = e.changedTouches[0].clientX - touchStartRef.current.x
+    const dy = e.changedTouches[0].clientY - touchStartRef.current.y
+    touchStartRef.current = null
+    // Only swipe if horizontal movement is dominant and exceeds threshold
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) goNext()
+      else goPrev()
+    }
+  }, [goNext, goPrev])
 
   // Auto-play for carousel (pause when lightbox is open)
   useEffect(() => {
@@ -169,7 +187,7 @@ function Gallery({ mode = 'carousel' }) {
             className="gallery-showcase scroll-reveal reveal-fade-up"
           >
             {/* Featured Image */}
-            <div className="showcase-hero">
+            <div className="showcase-hero" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
               {/* Previous image (fading out) */}
               {prevImage && (
                 <div className="showcase-hero-slide showcase-hero-slide--out" key={`out-${prevIndex}`}>
