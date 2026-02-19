@@ -11,11 +11,11 @@
   background: linear-gradient(
     180deg,
     rgba(13, 13, 13, 0.75) 0%,
-    rgba(13, 13, 20, 0.65) 100%
+    rgba(13, 13, 18, 0.65) 100%
   );
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(157, 78, 221, 0.12);
+  border-bottom: 1px solid rgba(157, 78, 221, 0.08);
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -40,8 +40,8 @@
 }
 
 @keyframes navGlowPulse {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.7; }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
 }
 
 /* ── Scroll state ── */
@@ -49,11 +49,9 @@
   background: linear-gradient(
     180deg,
     rgba(13, 13, 13, 0.92) 0%,
-    rgba(13, 13, 20, 0.88) 100%
+    rgba(13, 13, 18, 0.88) 100%
   );
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.4),
-    0 1px 12px rgba(123, 44, 191, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* ── Container ── */
@@ -350,7 +348,7 @@
     right: 0;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(180deg, #0d0d0d 0%, #1a1a2e 100%);
+    background: linear-gradient(180deg, #0d0d0d 0%, #1a1a22 100%);
     padding: 0.5rem 2rem 2rem;
     gap: 0;
     z-index: 999;
@@ -360,9 +358,8 @@
     transition: clip-path 0.5s cubic-bezier(0.23, 1, 0.32, 1),
                 opacity 0.4s ease,
                 visibility 0.4s ease;
-    border-bottom: 1px solid rgba(157, 78, 221, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6),
-                0 2px 16px rgba(123, 44, 191, 0.15);
+    border-bottom: 1px solid rgba(157, 78, 221, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   }
 
   .navbar-menu.active {

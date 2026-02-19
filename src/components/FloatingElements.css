@@ -10,8 +10,8 @@
 /* Individual floating element */
 .floating-el {
   position: absolute;
-  color: rgba(157, 78, 221, 0.5);
-  filter: drop-shadow(0 0 8px rgba(157, 78, 221, 0.15));
+  color: rgba(157, 78, 221, 0.3);
+  filter: drop-shadow(0 0 4px rgba(157, 78, 221, 0.08));
   animation: floatBob 8s ease-in-out infinite;
 }
 

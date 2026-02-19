@@ -2,7 +2,7 @@
 .contact-hero {
   padding: 5rem 0 3rem;
   background:
-    linear-gradient(180deg, rgba(26, 26, 46, 0.92) 0%, rgba(10, 10, 15, 0.98) 100%),
+    linear-gradient(180deg, rgba(22, 22, 34, 0.92) 0%, rgba(10, 10, 15, 0.98) 100%),
     url('/prestige9.jpeg');
   background-size: cover;
   background-position: center;
@@ -177,7 +177,7 @@
 .social-btn:hover {
   background: var(--purple-accent);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px var(--purple-glow);
+  box-shadow: 0 5px 15px rgba(157, 78, 221, 0.15);
 }
 
 .social-btn:hover svg {

@@ -1,16 +1,16 @@
 /* CSS Variables - Dark Purple Theme */
 :root {
   --bg-primary: #0D0D0D;
-  --bg-secondary: #1A1A2E;
-  --bg-card: #16162A;
+  --bg-secondary: #1A1A22;
+  --bg-card: #161620;
   --purple-primary: #7B2CBF;
   --purple-accent: #9D4EDD;
   --purple-light: #C77DFF;
-  --purple-glow: rgba(157, 78, 221, 0.4);
+  --purple-glow: rgba(157, 78, 221, 0.25);
   --text-primary: #FFFFFF;
   --text-secondary: #B0B0B0;
   --text-muted: #6B6B6B;
-  --border-color: rgba(157, 78, 221, 0.3);
+  --border-color: rgba(157, 78, 221, 0.15);
   --shadow-color: rgba(0, 0, 0, 0.5);
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
@@ -102,7 +102,7 @@ a:hover {
 
 .btn-primary:hover {
   background: linear-gradient(135deg, #8B3DD4, #B06AE8);
-  box-shadow: 0 0 20px var(--purple-glow), 0 0 40px rgba(157, 78, 221, 0.4);
+  box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
   color: var(--text-primary);
 }
 
@@ -129,7 +129,7 @@ a:hover {
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 30px var(--shadow-color),
-              0 0 20px var(--purple-glow);
+              0 0 12px rgba(157, 78, 221, 0.12);
 }
 
 /* Container */
@@ -163,7 +163,7 @@ a:hover {
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--purple-accent), var(--purple-light), var(--purple-accent), transparent);
   border-radius: 1px;
-  box-shadow: 0 0 8px rgba(157, 78, 221, 0.4), 0 0 20px rgba(157, 78, 221, 0.15);
+  box-shadow: 0 0 6px rgba(157, 78, 221, 0.2);
 }
 
 .section-title span {
@@ -173,8 +173,7 @@ a:hover {
 /* Glow Effect */
 .glow {
   text-shadow: 0 0 10px var(--purple-glow),
-               0 0 20px var(--purple-glow),
-               0 0 40px var(--purple-glow);
+               0 0 20px var(--purple-glow);
 }
 
 /* Form Styles */
