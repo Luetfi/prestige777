@@ -71,6 +71,7 @@ function Gallery({ mode = 'carousel' }) {
   const timerRef = useRef(null)
   const thumbStripRef = useRef(null)
   const touchStartRef = useRef(null)
+  const swipedRef = useRef(false)
 
   const totalSlides = galleryImages.length
 
@@ -98,6 +99,19 @@ function Gallery({ mode = 'carousel' }) {
   // Touch swipe handlers for mobile
   const handleTouchStart = useCallback((e) => {
     touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    swipedRef.current = false
+    // Pause autoplay during touch
+    if (timerRef.current) clearInterval(timerRef.current)
+  }, [])
+
+  const handleTouchMove = useCallback((e) => {
+    if (!touchStartRef.current) return
+    const dx = e.touches[0].clientX - touchStartRef.current.x
+    const dy = e.touches[0].clientY - touchStartRef.current.y
+    // Prevent vertical scrolling when swiping horizontally
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+      e.preventDefault()
+    }
   }, [])
 
   const handleTouchEnd = useCallback((e) => {
@@ -107,6 +121,7 @@ function Gallery({ mode = 'carousel' }) {
     touchStartRef.current = null
     // Only swipe if horizontal movement is dominant and exceeds threshold
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swipedRef.current = true
       if (dx < 0) goNext()
       else goPrev()
     }
@@ -132,6 +147,8 @@ function Gallery({ mode = 'carousel' }) {
   }, [currentIndex, mode])
 
   const openLightbox = (index) => {
+    // Don't open lightbox if user just swiped
+    if (swipedRef.current) { swipedRef.current = false; return }
     setLightboxIndex(index)
     setLightboxOpen(true)
   }
@@ -187,7 +204,7 @@ function Gallery({ mode = 'carousel' }) {
             className="gallery-showcase scroll-reveal reveal-fade-up"
           >
             {/* Featured Image */}
-            <div className="showcase-hero" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+            <div className="showcase-hero" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
               {/* Previous image (fading out) */}
               {prevImage && (
                 <div className="showcase-hero-slide showcase-hero-slide--out" key={`out-${prevIndex}`}>
